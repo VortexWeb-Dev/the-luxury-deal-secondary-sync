@@ -93,11 +93,29 @@ class WebhookController
         $phone = $contact['PHONE'][0]['VALUE'];
         $email = $contact['EMAIL'][0]['VALUE'];
 
-        $lead = $this->bitrix->addLead(CONFIG['LEAD_ENTITY_TYPE_ID'], [
-            'ufCrm185Name' => $name,
-            'ufCrm185Phone' => $phone,
-            'ufCrm185Email' => $email,
-            'ufCrm185DealId' => $dealId,
+        $unitNumber = $deal['UF_CRM_1730722137745'];
+        $remarks = $deal['UF_CRM_1730870220689'];
+        $title = $deal['TITLE'];
+
+        $unitPurpose = $this->utils->getUnitPurposeId($deal['UF_CRM_1730953177974']); // Not complete
+        $propertyType = $this->utils->getPropertyTypeId($deal['UF_CRM_672DD64B4AEA1']);
+        $unitStatus = $this->utils->getUnitStatusId($deal['UF_CRM_1730954607222']);
+        $bedrooms = $this->utils->getBedroomsId($deal['UF_CRM_67178A4525DE2']);
+        $managerApproval = $this->utils->geManagerApprovalId($deal['UF_CRM_1730805220080']);
+
+        $lead = $this->bitrix->addLead(CONFIG['SECONDARY_ENTITY_TYPE_ID'], [
+            'ufCrm9_1735639216243' => $title,
+            'ufCrm9_1743737461' => $name,
+            'ufCrm9_1741866044408' => $phone,
+            'ufCrm9_1741866064161' => $email,
+            'ufCrm9_1743737418' => $dealId,
+            'ufCrm9_1733832564093' => $unitNumber,
+            'ufCrm9_1733833886' => $remarks,
+            'ufCrm9_1733832278562' => $propertyType,
+            'ufCrm9_1733833012975' => $unitStatus,
+            'ufCrm9_1733833194417' => $bedrooms,
+            'ufCrm9_1734700123397' => $managerApproval,
+            'ufCrm9_1733832784377' => $unitPurpose,
             'categoryId' => CONFIG['AVAILABILITY_PIPELINE_ID'],
         ]);
 
