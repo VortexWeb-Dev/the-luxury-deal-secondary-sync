@@ -16,7 +16,6 @@ class UtilsController
         return $data;
     }
 
-
     // Sends response back to the webhook
     public static function sendResponse(int $statusCode, array $data): void
     {
@@ -33,7 +32,7 @@ class UtilsController
     }
 
     // Map deal bedrooms to their respective IDs
-    public static function getBedroomsId(int $dealBedrooms): ?int
+    public static function getBedroomsId($dealBedrooms): ?int
     {
         $bedroomsId = null;
         switch ($dealBedrooms) {
@@ -68,7 +67,7 @@ class UtilsController
     }
 
     // Map deal unit status to their respective IDs
-    public static function getUnitStatusId(int $dealUnitStatus): ?int
+    public static function getUnitStatusId($dealUnitStatus): ?int
     {
         $unitStatusId = null;
         switch ($dealUnitStatus) {
@@ -86,7 +85,7 @@ class UtilsController
     }
 
     // Map deal unit status to their respective IDs
-    public static function geManagerApprovalId(int $dealManagerApproval): ?int
+    public static function geManagerApprovalId($dealManagerApproval): ?int
     {
         $managerApprovalId = null;
         switch ($dealManagerApproval) {
@@ -104,7 +103,7 @@ class UtilsController
     }
 
     // Map deal property type to their respective IDs
-    public static function getPropertyTypeId(int $dealPropertyType): ?int
+    public static function getPropertyTypeId($dealPropertyType): ?int
     {
         $propertyTypeId = null;
         switch ($dealPropertyType) {
@@ -143,7 +142,7 @@ class UtilsController
     }
 
     // Map deal unit purpose to their respective IDs
-    public static function getUnitPurposeId(int $dealUnitPurpose): ?int
+    public static function getUnitPurposeId($dealUnitPurpose): ?int
     {
         $unitPurposeId = null;
         switch ($dealUnitPurpose) {

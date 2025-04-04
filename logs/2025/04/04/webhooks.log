@@ -1,0 +1,51 @@
+[2025-04-04 10:24:16] Type: deal_updated, Data: {
+    "event": "ONCRMDEALUPDATE",
+    "event_handler_id": "33",
+    "data": {
+        "FIELDS": {
+            "ID": "223"
+        }
+    },
+    "ts": "1743741052",
+    "auth": {
+        "domain": "crm.theluxuryrealestate.ae",
+        "client_endpoint": "https:\/\/crm.theluxuryrealestate.ae\/rest\/",
+        "server_endpoint": "https:\/\/oauth.bitrix.info\/rest\/",
+        "member_id": "b642bcbe2657f0372a03f2c403928347",
+        "application_token": "hsxj129delgwvzgzsxs6pk61cgn1oekp"
+    }
+}
+[2025-04-04 10:24:42] Type: deal_updated, Data: {
+    "event": "ONCRMDEALUPDATE",
+    "event_handler_id": "33",
+    "data": {
+        "FIELDS": {
+            "ID": "223"
+        }
+    },
+    "ts": "1743741052",
+    "auth": {
+        "domain": "crm.theluxuryrealestate.ae",
+        "client_endpoint": "https:\/\/crm.theluxuryrealestate.ae\/rest\/",
+        "server_endpoint": "https:\/\/oauth.bitrix.info\/rest\/",
+        "member_id": "b642bcbe2657f0372a03f2c403928347",
+        "application_token": "hsxj129delgwvzgzsxs6pk61cgn1oekp"
+    }
+}
+[2025-04-04 10:24:53] Type: deal_updated, Data: {
+    "event": "ONCRMDEALUPDATE",
+    "event_handler_id": "33",
+    "data": {
+        "FIELDS": {
+            "ID": "223"
+        }
+    },
+    "ts": "1743741052",
+    "auth": {
+        "domain": "crm.theluxuryrealestate.ae",
+        "client_endpoint": "https:\/\/crm.theluxuryrealestate.ae\/rest\/",
+        "server_endpoint": "https:\/\/oauth.bitrix.info\/rest\/",
+        "member_id": "b642bcbe2657f0372a03f2c403928347",
+        "application_token": "hsxj129delgwvzgzsxs6pk61cgn1oekp"
+    }
+}

@@ -1,0 +1,13 @@
+[2025-04-04 10:24:17] Error: Error processing request
+Exception: Too few arguments to function BitrixController::getLeadByDealId(), 1 passed in /opt/lampp/htdocs/projects/the-luxury/deal-secondary-sync/src/WebhookController.php on line 123 and exactly 2 expected
+Stack Trace:
+#0 /opt/lampp/htdocs/projects/the-luxury/deal-secondary-sync/src/WebhookController.php(123): BitrixController->getLeadByDealId(223)
+#1 /opt/lampp/htdocs/projects/the-luxury/deal-secondary-sync/src/WebhookController.php(51): WebhookController->handleDealUpdated(Array)
+#2 /opt/lampp/htdocs/projects/the-luxury/deal-secondary-sync/index.php(51): WebhookController->handleRequest('dealUpdated')
+#3 {main}
+[2025-04-04 10:24:42] Error: Error processing request
+Exception: Undefined constant "SECONDARY_ENTITY_TYPE_ID"
+Stack Trace:
+#0 /opt/lampp/htdocs/projects/the-luxury/deal-secondary-sync/src/WebhookController.php(51): WebhookController->handleDealUpdated(Array)
+#1 /opt/lampp/htdocs/projects/the-luxury/deal-secondary-sync/index.php(51): WebhookController->handleRequest('dealUpdated')
+#2 {main}

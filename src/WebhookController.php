@@ -62,7 +62,6 @@ class WebhookController
     {
         $this->logger->logWebhook('deal_updated', $data);
 
-        // Process incoming data
         $event = $data['event'];
 
         if ($event !== 'ONCRMDEALUPDATE') {
@@ -103,7 +102,8 @@ class WebhookController
         $bedrooms = $this->utils->getBedroomsId($deal['UF_CRM_67178A4525DE2']);
         $managerApproval = $this->utils->geManagerApprovalId($deal['UF_CRM_1730805220080']);
 
-        $lead = $this->bitrix->addLead(CONFIG['SECONDARY_ENTITY_TYPE_ID'], [
+        $leadData = [
+            'title' => $title,
             'ufCrm9_1735639216243' => $title,
             'ufCrm9_1743737461' => $name,
             'ufCrm9_1741866044408' => $phone,
@@ -117,7 +117,23 @@ class WebhookController
             'ufCrm9_1734700123397' => $managerApproval,
             'ufCrm9_1733832784377' => $unitPurpose,
             'categoryId' => CONFIG['AVAILABILITY_PIPELINE_ID'],
-        ]);
+        ];
+
+        $existingLead = $this->bitrix->getLeadByDealId(CONFIG['SECONDARY_ENTITY_TYPE_ID'], $dealId);
+
+        if ($existingLead !== null) {
+            $leadId = $existingLead['id'];
+            $this->bitrix->updateLead(CONFIG['SECONDARY_ENTITY_TYPE_ID'], $leadData, $leadId);
+            $this->logger->logInfo('lead_updated', [
+                'leadId' => $leadId,
+                'data' => $leadData
+            ]);
+            $this->utils->sendResponse(200, [
+                'message' => 'Deal updated data processed successfully and lead updated with ID: ' . $leadId,
+            ]);
+        }
+
+        $lead = $this->bitrix->addLead(CONFIG['SECONDARY_ENTITY_TYPE_ID'], $leadData);
 
         if ($lead === null) {
             $this->utils->sendResponse(500, [
