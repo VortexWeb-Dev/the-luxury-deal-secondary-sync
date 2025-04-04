@@ -4,13 +4,6 @@ require_once __DIR__ . '/../crest/crest.php';
 
 class BitrixController
 {
-    private LoggerController $logger;
-
-    public function __construct()
-    {
-        $this->logger = new LoggerController();
-    }
-
     // Method to add a secondary lead
     public function addLead(int $entityTypeId, array $leadData): ?array
     {
@@ -25,8 +18,6 @@ class BitrixController
             'entityTypeId' => $entityTypeId,
             'fields' => $leadData,
         ]);
-
-        $this->logger->logInfo('result', $result);
 
         if (isset($result['result']['item'])) {
             return $result['result']['item'];

@@ -73,6 +73,12 @@ class WebhookController
         $dealId = $data['data']['FIELDS']['ID'];
         $deal = $this->bitrix->getDeal($dealId);
 
+        if ($deal === null) {
+            $this->utils->sendResponse(400, [
+                'error' => 'Deal not found'
+            ]);
+        }
+
         if (!$this->utils->isValidDeal($deal)) {
             $this->utils->sendResponse(400, [
                 'error' => 'Invalid deal stage'
@@ -88,9 +94,9 @@ class WebhookController
             ]);
         }
 
-        $name = trim($contact['NAME'] . ' ' . $contact['LAST_NAME']);
-        $phone = $contact['PHONE'][0]['VALUE'];
-        $email = $contact['EMAIL'][0]['VALUE'];
+        $name = trim(($contact['NAME'] ?? '') . ' ' . ($contact['LAST_NAME'] ?? ''));
+        $phone = !empty($contact['PHONE'][0]['VALUE']) ? $contact['PHONE'][0]['VALUE'] : '';
+        $email = !empty($contact['EMAIL'][0]['VALUE']) ? $contact['EMAIL'][0]['VALUE'] : '';
 
         $unitNumber = $deal['UF_CRM_1730722137745'];
         $remarks = $deal['UF_CRM_1730870220689'];
@@ -116,6 +122,7 @@ class WebhookController
             'ufCrm9_1733833194417' => $bedrooms,
             'ufCrm9_1734700123397' => $managerApproval,
             'ufCrm9_1733832784377' => $unitPurpose,
+            'contactId' => $contact['ID'],
             'categoryId' => CONFIG['AVAILABILITY_PIPELINE_ID'],
         ];
 
