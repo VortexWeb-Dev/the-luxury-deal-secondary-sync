@@ -28,7 +28,7 @@ class UtilsController
     // Checks if the deal is in the correct stage
     public static function isValidDeal(array $deal): bool
     {
-        return isset($deal['STAGE_ID']) && $deal['STAGE_ID'] === CONFIG['DIRECTORS_APPROVAL_STAGE_ID'];
+        return isset($deal['STAGE_ID']) && $deal['STAGE_ID'] === CONFIG['TRANSFERRED_STAGE_ID'];
     }
 
     // Map deal bedrooms to their respective IDs
